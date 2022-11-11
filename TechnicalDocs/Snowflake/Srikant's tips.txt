@@ -1,0 +1,80 @@
+This is how I prepared
+
+1. Level Up series from Mindtickle
+
+2. Web UI essentials from Mind Tickle
+
+3. Sharing, Marketplace & Exchanges Workshop from Mind tickle
+
+4. SnowPro Core Sample Exam Questions from Mind tickle(30 Questions)
+
+5. https://www.youtube.com/c/DataEngineeringSimplified
+ (This channel has 5 sets of 60 questions (https://toppertips.com/snowpro-practice-test-part1
+ https://toppertips.com/snowpro-architecture-practice-test-part1/), 
+ and also brief explanation of some important topics with few questions at the end)
+ 
+6. https://www.youtube.com/watch?v=GYibSRsdbwo&list=PL8P3u3jjMVVlOo_ZzuT-iVFrYwkDZu-7u
+ (Go thru the whole playlist)
+ 
+7. https://quizlet.com/380510774/snowflake-certification-flash-cards/
+ (Search for snowflake, there are many sets. But cross verify the answers)
+
+Referred the following too:
+
+Snowflake Documentation for few topics (Most important)
+
+Snowflake community Knowledge base for few topics
+https://toppertips-bx67a.ondigitalocean.app/snowflake-snowpro-certification/
+
+https://medium.com/@sunil.rbk/snowflake-snowpro-certification-success-path-c5d9289c4eae
+
+I have purchased one Practice set in Udemy.
+
+In my exam, 20 to 30 questions were straight forward
+around 30 questions, we can answer by using elimination technique
+few questions were very big with each option in 2 to 3 lines
+
+Some Important topics to refer documentation:
+	- Security (There were couple of questions on MFA)
+	- TimeTravel & Fail-Safe
+	- Micro-Paritions
+	- Clustering
+	- Data Loading (Look into Copy, Put commands. Also Bulk Loading, Snowpipe)
+	- Account_Usage Vs Information schema
+	- Virtual Warehouses configuration(Auto_Scale, Maximized, Scaleup/down, ScaleOut/In)
+	- Roles (Got few questions on Accountadmin)
+	- Snowflake Editions (Mainly focus on features available in each edition)
+	- Data Sharing (I have see 5 to 6 questions on this topic)
+
+-----------------------------------------------------------------------------------------------------
+Aditya's tips and additions
+
+Few quizlet flash cards - https://quizlet.com/584214552/wh-concepts-flash-cards/
+
+Zero copy cloning explained really well here: https://hevodata.com/learn/zero-copy-clone-snowflake/
+
+Joyce Avila - Snowflake SnowPro Core Certification Exam Prep Series - https://www.youtube.com/watch?v=GYibSRsdbwo
+
+Free exams - 
+https://www.whizlabs.com/blog/snowflake-snowpro-core-certification-free-questions/ (50 questions with answers and explanantions)
+https://www.itexams.com/exam/SnowPro%20Core (Only 15 questions are free, then it asks to register, probably a fee will be charged to see all 180+ questions)
+https://www.examtopics.com/exams/snowflake/snowpro-core/view/ (Snowflake SnowPro Core Exam Actual Questions; 178 questions)
+-----------------------------------------------------------------------------------------------------
+
+11/8/2022 - 
+Read about these & then take tests: 
+https://www.youtube.com/watch?v=yQIMmXg7Seg
+https://docs.snowflake.com/en/user-guide/object-clone.html
+https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html
+https://docs.snowflake.com/en/user-guide/data-sharing-intro.html
+https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html
+https://docs.snowflake.com/en/user-guide/tables-clustering-micropartitions.html
+
+11/9/2022
+https://docs.snowflake.com/en/user-guide/warehouses-overview.html
+https://docs.snowflake.com/en/user-guide/tables-temp-transient.html
+https://docs.snowflake.com/en/user-guide/data-unload-prepare.html
+https://docs.snowflake.com/en/user-guide/ecosystem.html
+https://docs.snowflake.com/en/user-guide/security-encryption-end-to-end.html
+https://community.snowflake.com/s/article/Backup-Restore-Disaster-Recovery-and-High-Availability-in-Snowflake
+	

@@ -1,0 +1,12 @@
+Use Reviews;
+
+COPY INTO @azuredatalake/dataexports/topbusiness.parquet
+FROM (SELECT * FROM top_businesses LIMIT 100)
+FILE_FORMAT=(type=parquet) SINGLE=TRUE;
+
+COPY INTO @azuredatalake/dataexports/topbusiness.csv
+FROM (SELECT * FROM top_businesses LIMIT 100)
+FILE_FORMAT=(TYPE=csv COMPRESSION = NONE) SINGLE=TRUE HEADER=TRUE;
+                    
+                    
+list @azuredatalake/dataexports/;
