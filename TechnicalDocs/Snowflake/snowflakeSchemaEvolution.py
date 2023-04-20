@@ -43,6 +43,14 @@ except Exception as e:
 
 # close connection
 conn.close()
+
+
+n this example, we first set up the connection parameters for Snowflake and create a connection object. 
+We then define the SQL statements for creating a new table (create_table_sql) and adding a new column to an existing table (add_column_sql). 
+We then use a try/except block to execute these statements using a cursor object, commit the changes to the database, 
+and print a success message if everything goes well. Finally, we close the connection.
+
+You can modify the SQL statements to fit your specific schema evolution needs.
 ------------------------------------------------------------------------------
 
 import snowflake.connector
@@ -117,3 +125,13 @@ except Exception as e:
     print(f'Error creating stored procedure: {e}')
 finally:
     conn.close()
+------------------------------------
+
+This code defines a function create_or_update_table() that connects to Snowflake and executes SQL statements to create a table called users with three columns (id, name, and email) if it does not already exist, or add a column (age) to the table if it already exists.
+
+The code then connects to Snowflake again to create a stored procedure called create_or_update_users_table() that executes the create_or_update_table() function. The stored procedure is created with the CREATE OR REPLACE PROCEDURE statement and is defined as a Python language procedure that executes as the owner. The compiled byte code of the create_or_update_table() function is inserted into the stored procedure definition using the __code__.co_code.hex() method.
+
+Once the stored procedure is created, it can be executed in Snowflake with a simple CALL statement:
+
+CALL create_or_update_users_table();
+This will execute the stored procedure and perform any necessary schema evolution on the users table.
