@@ -9,7 +9,7 @@ import mysql.connector
 cnx = mysql.connector.connect(host='localhost',
                              database='world',
                              user='adi',
-                             password='mysDublin#1')
+                             password='')
 
 # Get two buffered cursors
 curA = cnx.cursor(buffered=True)
