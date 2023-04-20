@@ -5,7 +5,7 @@ try:
     connection = mysql.connector.connect(host='localhost',
                                          database='world',
                                          user='adi',
-                                         password='mysDublin#1')
+                                         password='')
     if connection.is_connected():
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
