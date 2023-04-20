@@ -1,1 +1,0 @@
-snowsql -a ln94522.us-east-2.aws -u snowtrial
