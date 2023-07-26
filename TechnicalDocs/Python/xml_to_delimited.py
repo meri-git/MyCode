@@ -1,12 +1,9 @@
 import xml.etree.ElementTree as ET
 import csv
 
-def flatten_xml_child_nodes(element):
-    # Flatten the XML structure of a given element and its children into a single string
-    flattened_data = []
-    for child in element:
-        flattened_data.append(ET.tostring(child, encoding='unicode'))
-    return '\n'.join(flattened_data)
+def flatten_xml(node):
+    xml_str = ET.tostring(node, encoding='unicode')
+    return xml_str.replace('\n', ' ').replace('\t', ' ')
 
 def xml_to_delimited(input_file, output_file, delimiter='\t'):
     # Parse the XML file
@@ -17,9 +14,9 @@ def xml_to_delimited(input_file, output_file, delimiter='\t'):
     with open(output_file, 'w', newline='') as delimited_file:
         csvwriter = csv.writer(delimited_file, delimiter=delimiter)
 
-        # Write each child node as a separate row in the delimited file
+        # Write each child element as a row in the delimited file
         for child in root:
-            row_data = [flatten_xml_child_nodes(child)]
+            row_data = [flatten_xml(child)]
             csvwriter.writerow(row_data)
 
 if __name__ == "__main__":
