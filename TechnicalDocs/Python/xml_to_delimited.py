@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import csv
 
-def xml_to_delimited(input_file, output_file, delimiter='\t', row_marker='###ROW_START###', row_end_marker='###ROW_END###'):
+def xml_to_delimited(input_file, output_file, delimiter='\t'):
     # Parse the XML file
     tree = ET.parse(input_file)
     root = tree.getroot()
@@ -12,7 +12,7 @@ def xml_to_delimited(input_file, output_file, delimiter='\t', row_marker='###ROW
 
         # Write each child element as a row in the delimited file
         for child in root:
-            row_data = [f"{row_marker}{ET.tostring(child, encoding='unicode')}{row_end_marker}"]
+            row_data = [ET.tostring(child, encoding='unicode')]
             csvwriter.writerow(row_data)
 
 if __name__ == "__main__":
