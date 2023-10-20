@@ -1,0 +1,55 @@
+Question: What is the difference between a reusable and a non-reusable transformation in Informatica PowerCenter?
+
+Answer: Reusable transformations can be used in multiple mappings, while non-reusable transformations are specific to a single mapping. Reusable transformations promote reusability and reduce redundancy.
+
+Question: How can you handle dynamic file names in Informatica PowerCenter when working with file-based sources?
+
+Answer: You can use parameter files or workflow variables to handle dynamic file names. These can be dynamically assigned at runtime to accommodate changing source file names.
+
+Question: Describe the concept of pushdown optimization in Informatica PowerCenter. When and why is it used?
+
+Answer: Pushdown optimization involves pushing transformations and processing down to the database, which can improve performance by leveraging the database's processing capabilities. It's used when working with relational databases for complex transformations.
+
+Question: What is the difference between a connected and an unconnected lookup transformation? Provide an example of when to use each.
+
+Answer: A connected lookup transformation is used in a mapping, whereas an unconnected lookup is called within another transformation. For instance, a connected lookup might be used to retrieve customer information in a mapping, while an unconnected lookup might be used to validate a single value within another transformation.
+
+Question: How can you implement change data capture (CDC) in Informatica PowerCenter, and what are the advantages of using CDC?
+
+Answer: CDC can be implemented using the CDC feature in Informatica PowerCenter, which tracks changes in the source data and loads only the changed data. The advantages include reduced processing time and the ability to keep data warehouses updated with real-time changes.
+
+Question: What is a session partition in Informatica PowerCenter, and how does it help in optimizing session performance?
+
+Answer: A session partition divides the data into smaller subsets, allowing multiple threads to process data in parallel. This improves session performance by utilizing multi-core processors and increasing throughput.
+
+Question: Explain the term "Slowly Changing Dimension" (SCD). How do you handle different types of SCDs in Informatica PowerCenter?
+
+Answer: SCDs are used to manage historical changes in dimension data. Informatica PowerCenter provides various techniques to handle different SCD types, such as Type 1 (overwrite), Type 2 (historical), and Type 3 (add new attribute).
+
+Question: What are mapplets in Informatica PowerCenter, and when would you use them in ETL processes?
+
+Answer: Mapplets are reusable sets of transformations that can be used in multiple mappings. They are useful for maintaining consistency and reducing development time when you need to reuse the same transformation logic.
+
+Question: Explain the concept of parameterization in Informatica PowerCenter. How can it be used in ETL workflows?
+
+Answer: Parameterization allows you to replace static values with parameters in mappings, sessions, and workflows. This makes workflows more dynamic and flexible, allowing you to change parameter values at runtime.
+
+Question: How do you handle errors and exceptions in Informatica PowerCenter? What are some best practices for error handling?
+
+Answer: Error handling can be managed through error transformation, email notifications, and log files. Best practices include using error tables to capture error details, setting up alerts for failed sessions, and creating workflows for error handling.
+
+Question: Explain the differences between a lookup transformation and a joiner transformation in Informatica PowerCenter. When would you use one over the other?
+
+Answer: A lookup transformation retrieves data from a reference table, while a joiner transformation combines data from two or more sources. Use lookup when you need to retrieve a single value, and use a joiner when you need to combine data from multiple sources based on a common key.
+
+Question: What is the role of the Informatica Repository Manager, and how is it used in the development and management of ETL processes?
+
+Answer: The Repository Manager is used to manage metadata, such as folders, mappings, sessions, and workflows. It's crucial for version control, migration, and access control of ETL objects.
+
+Question: How can you optimize the performance of Informatica PowerCenter workflows and mappings? Share some performance tuning techniques.
+
+Answer: Performance optimization techniques include using partitioning, pushdown optimization, session tuning, and optimizing SQL queries. Additionally, use session-level and mapping-level configurations to maximize performance.
+
+Question: Explain the process of handling complex file formats, such as XML or JSON, in Informatica PowerCenter. What transformations and techniques are commonly used for this purpose?
+
+Answer: To handle complex file formats, you can use XML and JSON transformations and parsers in Informatica PowerCenter. Techniques involve defining schemas, extracting data, and transforming it into a suitable format for loading into a target system.
