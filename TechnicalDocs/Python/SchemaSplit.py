@@ -1,39 +1,28 @@
 import re
-import os
 
-def split_ddl(input_file):
-    with open(input_file, 'r') as file:
-        content = file.read()
+def split_ddl_file(input_file_path):
+    # Read the input DDL file
+    with open(input_file_path, 'r', encoding='utf-8') as file:
+        ddl_content = file.read()
 
-    # Split by 'Create or replace schema'
-    schema_blocks = re.split(r'(?=Create or replace schema)', content)
+    # Split DDL content based on "create or replace schema" statements
+    ddl_parts = re.split(r'(?=create\s+or\s+replace\s+schema)', ddl_content, flags=re.IGNORECASE)
 
-    for block in schema_blocks:
-        schema_name_match = re.search(r'Create or replace schema\s+(\w+)', block, re.IGNORECASE)
-        if schema_name_match:
-            schema_name = schema_name_match.group(1)
+    # Output multiple DDL files
+    output_files = []
+    for idx, part in enumerate(ddl_parts):
+        if part.strip():
+            output_file_path = f"output_{idx + 1}.sql"
+            with open(output_file_path, 'w', encoding='utf-8') as output_file:
+                output_file.write(part.strip())
+            output_files.append(output_file_path)
 
-            # Create a directory for each schema if it doesn't exist
-            if not os.path.exists(schema_name):
-                os.makedirs(schema_name)
+    return output_files
 
-            # Write schema DDL to a file
-            schema_file_path = os.path.join(schema_name, f"{schema_name}_schema.ddl")
-            with open(schema_file_path, 'w') as schema_file:
-                schema_file.write(block)
+# Replace 'input_file_path' with the path to your huge DDL file
+input_file_path = 'path/to/your/huge_ddl_file.sql'
+result_files = split_ddl_file(input_file_path)
 
-            # Split tables and views DDLs
-            table_view_blocks = re.split(r'(?=Create table|Create view)', block, flags=re.IGNORECASE)
-            for table_view_block in table_view_blocks:
-                table_view_name_match = re.search(r'Create (table|view)\s+(\w+)', table_view_block, re.IGNORECASE)
-                if table_view_name_match:
-                    obj_type = table_view_name_match.group(1)
-                    obj_name = table_view_name_match.group(2)
-
-                    # Write table/view DDL to a file in the respective schema directory
-                    obj_file_path = os.path.join(schema_name, f"{obj_name}_{obj_type}.ddl")
-                    with open(obj_file_path, 'w') as obj_file:
-                        obj_file.write(table_view_block)
-
-# Replace 'input_file' with the path to your large DDL file
-split_ddl('input_file.sql')
+print(f"Split the DDL file into {len(result_files)} parts:")
+for file_path in result_files:
+    print(file_path)
