@@ -1,0 +1,31 @@
+def split_file(input_file_path):
+    with open(input_file_path, 'r', encoding='utf-8') as file:
+        content = file.read()
+
+    delimiter = '|'
+    parts = content.split(delimiter)
+
+    output_files = []
+    for idx, part in enumerate(parts):
+        # Get the first 100 characters after the pipe
+        file_name = part[:100].strip()
+        if not file_name:
+            file_name = f"output_{idx + 1}"
+
+        file_name = f"{file_name}.txt"
+        output_file_path = f"output/{file_name}"  # Modify path as needed
+
+        with open(output_file_path, 'w', encoding='utf-8') as output_file:
+            output_file.write(part)
+
+        output_files.append(output_file_path)
+
+    return output_files
+
+# Replace 'input_file_path' with the path to your huge file
+input_file_path = 'path/to/your/huge_file.txt'
+result_files = split_file(input_file_path)
+
+print(f"Split the file into {len(result_files)} parts:")
+for file_path in result_files:
+    print(file_path)
