@@ -1,3 +1,5 @@
+Describe how these behaviors impacted performance results so far this year.
+
 Demonstrated Courage: Showed exceptional courage in tackling complex data challenges, fearlessly approaching new methodologies and technologies, resulting in more innovative solutions.
 
 Ownership and Proactiveness: Consistently took ownership of tasks, whether big or small, displaying a proactive attitude that contributed significantly to meeting project deadlines and milestones.
@@ -7,3 +9,17 @@ Breakthrough Innovations: Spearheaded breakthroughs in data processing methodolo
 Curiosity and Collaboration: Fostered a culture of curiosity and transparency within the team, consistently encouraging knowledge-sharing and collaboration, which facilitated innovative problem-solving and enhanced team productivity.
 
 Continuous Improvement: Actively sought ways to better the user experience through data-driven insights, resulting in improved systems that positively impacted end-users, reflecting a commitment to delivering high-quality outcomes.
+
+------------------------------------------------------------------------------------------------------------------------------
+What are the areas of development in the coming year? Answer this with a few bullet points for a senior data engineer.
+
+Advanced Tool Proficiency: Expand expertise in emerging tools and technologies within the data engineering field to stay ahead of industry trends and enhance problem-solving capabilities.
+
+Leadership Skills Enhancement: Develop leadership qualities to mentor junior team members, fostering a more collaborative and knowledgeable team environment while honing project management skills.
+
+Deepening Domain Knowledge: Dive deeper into specific industry domains (e.g., healthcare, finance, etc.) to better understand unique data challenges and opportunities, enabling more tailored and effective solutions.
+
+Cross-functional Collaboration: Strengthen collaboration with other departments (e.g., data science, product development) to ensure seamless integration of data engineering solutions and foster a more holistic approach to projects.
+
+Communication and Presentation: Focus on improving communication and presentation skills to effectively articulate complex technical concepts to non-technical stakeholders, facilitating better decision-making and understanding across the organization.
+------------------------------------------------------------------------------------------------------------------------------
