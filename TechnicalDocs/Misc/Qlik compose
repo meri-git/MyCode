@@ -1,0 +1,13 @@
+Qlik Compose is a data integration tool that helps streamline and automate the process of preparing and combining data for analysis. Some salient features and functionalities include:
+
+Data Integration and Preparation: Qlik Compose allows users to integrate data from multiple sources, whether they're structured or unstructured, into a unified platform. It can handle various data formats and sources, making it easier to merge, clean, and transform data.
+
+Automated Data Pipelines: It offers the ability to create automated data pipelines, reducing manual intervention in the data preparation process. This includes tasks like data ingestion, transformation, and loading (ETL) processes.
+
+Data Modeling: Users can create data models that suit their analysis requirements. Qlik Compose provides tools for defining relationships between different datasets, enabling the creation of accurate and efficient data models.
+
+Scalability and Performance: The tool is designed to handle large volumes of data efficiently. It's scalable, allowing users to process and manage data at scale without compromising performance.
+
+Collaboration and Governance: Qlik Compose often comes with features that facilitate collaboration among team members working on data projects. It also provides governance features to ensure data quality, security, and compliance with regulations.
+
+Integration with Qlik Analytics Platform: As part of the Qlik suite, Compose integrates seamlessly with other Qlik products like Qlik Sense, enabling users to easily analyze and visualize the prepared data.
