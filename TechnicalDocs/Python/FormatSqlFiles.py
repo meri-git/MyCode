@@ -1,5 +1,3 @@
-import re
-
 def format_table_view_ddl(input_file, output_file):
     with open(input_file, 'r') as infile:
         sql_content = infile.read()
@@ -10,8 +8,8 @@ def format_table_view_ddl(input_file, output_file):
         def format_columns(match):
             replace = match.group(1) if match.group(1) else ''
             table_name = match.group(2)
-            columns = match.group(3).strip()
-            formatted_columns = re.sub(r',\s*', ',\n', columns)
+            columns = match.group(3).strip().split(',')
+            formatted_columns = '\n'.join(column.strip() for column in columns)
             return f'CREATE {replace}TABLE {table_name}\n({formatted_columns}\n);'
 
         # Apply formatting to each CREATE TABLE statement in the file
