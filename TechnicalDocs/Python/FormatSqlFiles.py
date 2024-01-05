@@ -1,6 +1,6 @@
 import sqlparse
 
-def format_ddls_with_columns_on_new_lines(input_file, output_file):
+def format_table_view_ddl(input_file, output_file):
     with open(input_file, 'r') as infile:
         sql_content = infile.read()
 
@@ -9,14 +9,14 @@ def format_ddls_with_columns_on_new_lines(input_file, output_file):
 
         formatted_statements = []
         for statement in statements:
-            # Parse the statement
             parsed = sqlparse.parse(statement)
-
-            # Iterate over tokens in each statement
             formatted_statement = ""
+
             for token in parsed[0].tokens:
-                if token.ttype in (sqlparse.tokens.Keyword, sqlparse.tokens.Name):
+                if token.ttype in (sqlparse.tokens.Keyword, sqlparse.tokens.DDL):
                     formatted_statement += '\n' + token.value
+                elif token.ttype == sqlparse.tokens.Punctuation and token.value == ',':
+                    formatted_statement += token.value + '\n'
                 else:
                     formatted_statement += ' ' + token.value
 
@@ -32,4 +32,4 @@ def format_ddls_with_columns_on_new_lines(input_file, output_file):
 input_file = 'input.sql'
 output_file = 'output.sql'
 
-format_ddls_with_columns_on_new_lines(input_file, output_file)
+format_table_view_ddl(input_file, output_file)
