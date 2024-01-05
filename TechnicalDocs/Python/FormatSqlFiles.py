@@ -1,6 +1,6 @@
 import sqlparse
 
-def format_columns_separate_rows(input_file, output_file):
+def format_ddls_with_columns_on_new_lines(input_file, output_file):
     with open(input_file, 'r') as infile:
         sql_content = infile.read()
 
@@ -9,26 +9,18 @@ def format_columns_separate_rows(input_file, output_file):
 
         formatted_statements = []
         for statement in statements:
+            # Parse the statement
             parsed = sqlparse.parse(statement)
-            for stmt in parsed:
-                # Filter out non-DDL statements (e.g., comments)
-                if stmt.get_type() != 'CREATE':
-                    continue
-                
-                # Extract and format column names in separate rows
-                for token in stmt.tokens:
-                    if isinstance(token, sqlparse.sql.IdentifierList):
-                        for identifier in token.get_identifiers():
-                            formatted_statements.append(identifier.normalized)
-                    elif token.ttype is sqlparse.tokens.Keyword and token.value.upper() == 'CREATE':
-                        formatted_statements.append(token.value.upper())
-                    elif token.ttype is sqlparse.tokens.Keyword and token.value.upper() == 'TABLE':
-                        formatted_statements.append(token.value.upper())
-                    elif isinstance(token, sqlparse.sql.Parenthesis):
-                        formatted_statements.append(token.value.strip())
-                    else:
-                        continue
-                formatted_statements.append('\n')  # Separate columns by a newline
+
+            # Iterate over tokens in each statement
+            formatted_statement = ""
+            for token in parsed[0].tokens:
+                if token.ttype in (sqlparse.tokens.Keyword, sqlparse.tokens.Name):
+                    formatted_statement += '\n' + token.value
+                else:
+                    formatted_statement += ' ' + token.value
+
+            formatted_statements.append(formatted_statement.strip())
 
         formatted_sql = '\n'.join(formatted_statements)
 
@@ -40,4 +32,4 @@ def format_columns_separate_rows(input_file, output_file):
 input_file = 'input.sql'
 output_file = 'output.sql'
 
-format_columns_separate_rows(input_file, output_file)
+format_ddls_with_columns_on_new_lines(input_file, output_file)
