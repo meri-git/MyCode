@@ -1,3 +1,5 @@
+import re
+
 def format_table_view_ddl(input_file, output_file):
     with open(input_file, 'r') as infile:
         sql_content = infile.read()
