@@ -1,22 +1,25 @@
+import re
+
 def format_table_view_ddl(input_file, output_file):
     with open(input_file, 'r') as infile:
-        # Read the content of the input file
-        input_content = infile.read()
+        sql_content = infile.read()
 
-        # Splitting by space and removing unnecessary characters
-        tokens = input_content.replace('(', ';\n(').replace(')', '\n)').split()
+        # Using regular expressions to match CREATE TABLE statements
+        table_ddl_pattern = re.compile(r'CREATE\s+(OR\s+REPLACE\s+)?TABLE (\S+) \((.*?)\);', re.DOTALL)
 
-        formatted_output = ""
-        for token in tokens:
-            if token == '(':
-                formatted_output = formatted_output.rstrip() + '\n' + token
-            elif token == ',':
-                formatted_output = formatted_output.rstrip() + '\n' + token + ' '
-            else:
-                formatted_output += ' ' + token
+        def format_columns(match):
+            replace = match.group(1) if match.group(1) else ''
+            table_name = match.group(2)
+            columns = match.group(3).strip()
+            formatted_columns = re.sub(r',\s*', ',\n', columns)
+            return f'CREATE {replace}TABLE {table_name}\n({formatted_columns}\n);'
 
-    with open(output_file, 'w') as outfile:
-        outfile.write(formatted_output)
+        # Apply formatting to each CREATE TABLE statement in the file
+        formatted_sql = table_ddl_pattern.sub(format_columns, sql_content)
+
+        # Write formatted SQL to output file
+        with open(output_file, 'w') as outfile:
+            outfile.write(formatted_sql)
 
 # Replace 'input.sql' and 'output.sql' with your file names
 input_file = 'input.sql'
