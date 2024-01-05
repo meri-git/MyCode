@@ -1,6 +1,6 @@
 import sqlparse
 
-def format_ddls_in_sql_file(input_file, output_file):
+def format_columns_separate_rows(input_file, output_file):
     with open(input_file, 'r') as infile:
         sql_content = infile.read()
 
@@ -9,9 +9,26 @@ def format_ddls_in_sql_file(input_file, output_file):
 
         formatted_statements = []
         for statement in statements:
-            # Parse and format each individual statement
-            parsed = sqlparse.format(statement, reindent=True, keyword_case='upper')
-            formatted_statements.append(parsed)
+            parsed = sqlparse.parse(statement)
+            for stmt in parsed:
+                # Filter out non-DDL statements (e.g., comments)
+                if stmt.get_type() != 'CREATE':
+                    continue
+                
+                # Extract and format column names in separate rows
+                for token in stmt.tokens:
+                    if isinstance(token, sqlparse.sql.IdentifierList):
+                        for identifier in token.get_identifiers():
+                            formatted_statements.append(identifier.normalized)
+                    elif token.ttype is sqlparse.tokens.Keyword and token.value.upper() == 'CREATE':
+                        formatted_statements.append(token.value.upper())
+                    elif token.ttype is sqlparse.tokens.Keyword and token.value.upper() == 'TABLE':
+                        formatted_statements.append(token.value.upper())
+                    elif isinstance(token, sqlparse.sql.Parenthesis):
+                        formatted_statements.append(token.value.strip())
+                    else:
+                        continue
+                formatted_statements.append('\n')  # Separate columns by a newline
 
         formatted_sql = '\n'.join(formatted_statements)
 
@@ -23,4 +40,4 @@ def format_ddls_in_sql_file(input_file, output_file):
 input_file = 'input.sql'
 output_file = 'output.sql'
 
-format_ddls_in_sql_file(input_file, output_file)
+format_columns_separate_rows(input_file, output_file)
